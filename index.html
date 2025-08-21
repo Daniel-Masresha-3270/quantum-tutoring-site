@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Tutoring Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white p-8 rounded-2xl shadow-xl">
+
+            <header class="text-center mb-10">
+                <img src="logo.png" alt="Quantum Tutoring Logo" class="mx-auto h-24 mb-4">
+                <h1 class="text-4xl font-bold text-gray-800 mb-2">ኳንተም አስጠኚዎች</h1>
+                <p class="text-xl text-gray-500">Empowering the next generation through education.</p>
+                <p class="text-xl text-gray-500">አላማችን ትውልድን በትምህርት ማብቃት ነው።</p>
+            </header>
+
+            <div id="root-page">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-semibold text-gray-800 mb-4">Connect with us and transform your learning
+                        journey.</h2>
+                    <p class="text-lg text-gray-600 max-w-prose mx-auto">
+                        Quantum Tutoring delivers personalized, in-home education for all ages. We specialize in
+                        tutoring high school students in math, physics, and chemistry with our team of ethical, expert
+                        engineers and teachers. We help your child build a strong foundation for their future.
+                    </p>
+                    <p class="text-lg text-gray-600 max-w-prose mx-auto">
+                        ለሁሉም የዕድሜ ክልል ተማሪዎች በታማኝና ልምድ ባላቸው አስጠኚዎች የቤት ለቤት የማጠናከሪያ ትምህርት እንሰጣለን። በተለይ ለሁለተኛ ደረጃ ተማሪዎች
+                        በሂሳብ፣ በፊዚክስ እና በኬሚስትሪ የላቀ እውቀት ባላቸው ኢንጂነሮች እና ልምድ ባላቸው መምህራን እገዛ እናደርጋለን። ግባችንም እነዚህ ትምህርቶች
+                        ተማሪዎችን ሙሉ በሙሉ እንዲቀላቸው ማስቻል ነው።
+                    </p>
+                </div>
+
+                <div id="announcements-section"
+                    class="max-w-4xl mx-auto mb-8 p-6 bg-white rounded-lg shadow-md border-t-4 border-t-indigo-500">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Latest Announcements 📣</h2>
+                    <div id="announcements-display" class="space-y-4">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-green-50 p-6 rounded-2xl shadow-lg flex flex-col items-center text-center">
+                        <h3 class="text-xl font-bold text-green-700 mb-2">ለተማሪዎች/ለወላጆች</h3>
+                        <p class="text-sm text-gray-600 mb-4">ለመመዝገብ ቀጥሎ ያለውን ይጫኑ!</p>
+                        <button id="nav-to-student"
+                            class="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-xl shadow-lg hover:bg-green-600 transition-colors duration-200">
+                            የተማሪዎች መመዘዝገቢያ
+                        </button>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-2xl shadow-lg flex flex-col items-center text-center">
+                        <h3 class="text-xl font-bold text-indigo-700 mb-2">ለአስጠኚዎች</h3>
+                        <p class="text-sm text-gray-600 mb-4">ለመመዝገብ ቀጥሎ ያለውን ይጫኑ!</p>
+                        <button id="nav-to-tutor"
+                            class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl shadow-lg hover:bg-indigo-600 transition-colors duration-200">
+                            የአስጠኚዎች መመዘዝገቢያ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="student-page" class="hidden space-y-4">
+                <button id="back-from-student"
+                    class="bg-gray-200 text-gray-800 py-2 px-4 rounded-xl hover:bg-gray-300 transition-colors duration-200 mb-6">←
+                    Back to Home</button>
+                <div class="bg-green-50 p-6 rounded-2xl shadow-lg">
+                    <div class="mb-6 p-4 text-center bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700">
+                        <p>እባክዎ ይህንን ቅጽ በትክክልና ሙሉ በሙሉ ይሙሉ። በቅርቡ ባስገቡት አድራሻ እናገኝዎታለን።</p>
+                    </div>
+
+                    <h2 class="text-2xl font-semibold text-green-700 mb-4 text-center">Student Registration</h2>
+
+                    <form id="student-form" class="space-y-4">
+                        <input type="hidden" name="formType" value="student">
+                        <div>
+                            <label for="student-fullName" class="block text-sm font-medium text-gray-700">Student's Full
+                                Name</label>
+                            <input type="text" id="student-fullName" name="Full Name" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="student-gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                            <select id="student-gender" name="Gender" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                                <option value="" disabled selected hidden>Choose Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="student-parentName" class="block text-sm font-medium text-gray-700">Parent's
+                                Full Name</label>
+                            <input type="text" id="student-parentName" name="Parent Name" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="student-phone" class="block text-sm font-medium text-gray-700">Parent's
+                                Phone</label>
+                            <input type="tel" id="student-phone" name="Phone" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="student-email" class="block text-sm font-medium text-gray-700">Parent's
+                                Email</label>
+                            <input type="email" id="student-email" name="Email" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="student-grade" class="block text-sm font-medium text-gray-700">Student's
+                                Grade/Level</label>
+                            <input type="text" id="student-grade" name="Grade/Level" required
+                                placeholder="e.g., Grade 9, University"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="student-subjects" class="block text-sm font-medium text-gray-700">Subject(s)
+                                Needed</label>
+                            <input type="text" id="student-subjects" name="Subject(s) Needed" required
+                                placeholder="e.g., Math, Science"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div class="form-group">
+                            <label for="student-area"
+                                class="block text-sm font-medium text-gray-700">Area/Neighborhood</label>
+                            <select id="student-area" name="Area/Neighborhood" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                                <option value="" disabled selected hidden>Select an Area</option>
+                                <option value="Piazza">Piazza</option>
+                                <option value="Kazanchis">Kazanchis</option>
+                                <option value="Gerji">Gerji</option>
+                                <option value="Megenagna">Megenagna</option>
+                                <option value="Gurd Shola">Gurd Shola</option>
+                                <option value="Ayat">Ayat</option>
+                                <option value="Merkato">Merkato</option>
+                                <option value="4 Kilo">4 Kilo</option>
+                                <option value="6 Kilo">6 Kilo</option>
+                                <option value="Kera">Kera</option>
+                                <option value="Jemo">Jemo</option>
+                                <option value="Lafto/Nifas Silk">Lafto/Nifas Silk</option>
+                                <option value="Lideta">Lideta</option>
+                                <option value="Asko">Asko</option>
+                                <option value="Medhanialem">Medhanialem</option>
+                                <option value="Shegole">Shegole</option>
+                                <option value="Winget">Winget</option>
+                                <option value="Torhailoch">Torhailoch</option>
+                                <option value="Atena Tera">Atena Tera</option>
+                                <option value="Semmit">Semmit</option>
+                                <option value="CMC">CMC</option>
+                                <option value="Fyel Bet">Fyel Bet</option>
+                                <option value="Addisu Gebeya">Addisu Gebeya</option>
+                                <option value="Sululta">Sululta</option>
+                                <option value="Bahir Dar">Bahir Dar</option>
+                                <option value="Not Listed">Not Listed</option>
+                            </select>
+                        </div>
+                        <div id="student-other-area-container" class="hidden">
+                            <label for="student-other-area" class="block text-sm font-medium text-gray-700">Please
+                                specify your Area/Neighborhood</label>
+                            <input type="text" id="student-other-area" name="Other Area" placeholder="e.g., Bole"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl shadow-lg hover:bg-indigo-600 transition-colors duration-200 mt-4">
+                            Register Student
+                        </button>
+                    </form>
+
+                    <div class="mt-8 text-center pt-8 border-t border-gray-200">
+                        <button id="show-student-qr"
+                            class="bg-gray-200 text-gray-800 py-2 px-4 rounded-xl hover:bg-gray-300 transition-colors duration-200 mb-4">Invite
+                            Other Students</button>
+                        <div id="student-qr-container" class="hidden">
+                            <h3 class="text-xl font-semibold text-green-700 mb-2">Scan to share this form.</h3>
+                            <canvas id="student-qrcode-canvas" class="mx-auto"></canvas>
+                            <button id="download-student-qr"
+                                class="mt-2 bg-green-500 text-white font-bold py-2 px-4 rounded-xl hover:bg-green-600 transition-colors duration-200">
+                                Download QR Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tutor-page" class="hidden space-y-4">
+                <button id="back-from-tutor"
+                    class="bg-gray-200 text-gray-800 py-2 px-4 rounded-xl hover:bg-gray-300 transition-colors duration-200 mb-6">←
+                    Back to Home</button>
+                <div class="bg-indigo-50 p-6 rounded-2xl shadow-lg">
+                    <div class="mb-6 p-4 text-center bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700">
+                        <p>እባክዎ ይህንን ቅጽ በትክክልና ሙሉ በሙሉ ይሙሉ። በቅርቡ ባስገቡት አድራሻ እናገኝዎታለን።</p>
+                    </div>
+
+                    <h2 class="text-2xl font-semibold text-indigo-700 mb-4 text-center">Tutor Registration</h2>
+
+                    <form id="tutor-form" class="space-y-4">
+                        <input type="hidden" name="formType" value="tutor">
+                        <div>
+                            <label for="tutor-fullName" class="block text-sm font-medium text-gray-700">Full
+                                Name</label>
+                            <input type="text" id="tutor-fullName" name="Full Name" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="tutor-gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                            <select id="tutor-gender" name="Gender" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="" disabled selected hidden>Choose Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="tutor-phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                            <input type="tel" id="tutor-phone" name="Phone" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="tutor-email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="tutor-email" name="Email" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="tutor-subjects" class="block text-sm font-medium text-gray-700">Subject(s) You
+                                Can Teach</label>
+                            <input type="text" id="tutor-subjects" name="Subject(s)" required
+                                placeholder="e.g., Math, Physics, English"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="tutor-grade" class="block text-sm font-medium text-gray-700">Grade/Level You Can
+                                Teach</label>
+                            <input type="text" id="tutor-grade" name="Grade/Level You Can Teach" required
+                                placeholder="e.g., High School, University"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="tutor-rate" class="block text-sm font-medium text-gray-700">Rate/hr
+                                (ETB)</label>
+                            <input type="number" id="tutor-rate" name="Rate/hr (ETB)" required placeholder="e.g., 200"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div class="form-group">
+                            <label for="tutor-area"
+                                class="block text-sm font-medium text-gray-700">Area/Neighborhood</label>
+                            <select id="tutor-area" name="Area/Neighborhood" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="" disabled selected hidden>Select an Area</option>
+                                <option value="Piazza">Piazza</option>
+                                <option value="Kazanchis">Kazanchis</option>
+                                <option value="Gerji">Gerji</option>
+                                <option value="Megenagna">Megenagna</option>
+                                <option value="Gurd Shola">Gurd Shola</option>
+                                <option value="Ayat">Ayat</option>
+                                <option value="Merkato">Merkato</option>
+                                <option value="4 Kilo">4 Kilo</option>
+                                <option value="6 Kilo">6 Kilo</option>
+                                <option value="Kera">Kera</option>
+                                <option value="Jemo">Jemo</option>
+                                <option value="Lafto/Nifas Silk">Lafto/Nifas Silk</option>
+                                <option value="Lideta">Lideta</option>
+                                <option value="Asko">Asko</option>
+                                <option value="Medhanialem">Medhanialem</option>
+                                <option value="Shegole">Shegole</option>
+                                <option value="Winget">Winget</option>
+                                <option value="Torhailoch">Torhailoch</option>
+                                <option value="Atena Tera">Atena Tera</option>
+                                <option value="Semmit">Semmit</option>
+                                <option value="CMC">CMC</option>
+                                <option value="Fyel Bet">Fyel Bet</option>
+                                <option value="Addisu Gebeya">Addisu Gebeya</option>
+                                <option value="Sululta">Sululta</option>
+                                <option value="Bahir Dar">Bahir Dar</option>
+                                <option value="Not Listed">Not Listed</option>
+                            </select>
+                        </div>
+                        <div id="tutor-other-area-container" class="hidden">
+                            <label for="tutor-other-area" class="block text-sm font-medium text-gray-700">Please specify
+                                your Area/Neighborhood</label>
+                            <input type="text" id="tutor-other-area" name="Other Area" placeholder="e.g., Bole"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="tutor-file" class="block text-sm font-medium text-gray-700">Upload CV /
+                                Certificates</label>
+                            <input type="file" id="tutor-file" name="CV/Certificate"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <button type="submit" id="tutor-submit-btn"
+                            class="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-xl shadow-lg hover:bg-green-600 transition-colors duration-200 mt-4">
+                            Register as Tutor
+                        </button>
+                    </form>
+
+                    <div class="mt-8 text-center pt-8 border-t border-gray-200">
+                        <button id="show-tutor-qr"
+                            class="bg-gray-200 text-gray-800 py-2 px-4 rounded-xl hover:bg-gray-300 transition-colors duration-200 mb-4">Invite
+                            Other Tutors</button>
+                        <div id="tutor-qr-container" class="hidden">
+                            <h3 class="text-xl font-semibold text-indigo-700 mb-2">Scan to share this form.</h3>
+                            <canvas id="tutor-qrcode-canvas" class="mx-auto"></canvas>
+                            <button id="download-tutor-qr"
+                                class="mt-2 bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl hover:bg-indigo-600 transition-colors duration-200">
+                                Download QR Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Contact Us</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">ለበለጠ መረጃ የሚከተሉትን አድራሻዎች ይጠቀሙ።</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md flex items-start space-x-4">
+                        <i class="fas fa-phone-alt text-2xl text-blue-500"></i>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Phone</h3>
+                            <ul class="text-sm text-gray-600 space-y-1 mt-2">
+                                <li><a href="tel:+251982087021" class="hover:underline">+251 98 208 7021</a></li>
+                                <li><a href="tel:+251938320230" class="hover:underline">+251 93 832 0230</a></li>
+                                <li><a href="tel:+251938535445" class="hover:underline">+251 93 853 5445</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md flex items-start space-x-4">
+                        <i class="fas fa-envelope text-2xl text-blue-500"></i>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Email</h3>
+                            <a href="mailto:quantumtutoring04@gmail.com"
+                                class="text-sm text-gray-600 hover:underline">quantumtutoring04@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // IMPORTANT: You MUST update this URL with the new Web App URL from your Google Apps Script.
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-z3D5qG2cUEqspqpYi8S1frDnkeaVAYmLnzsTXl8JD0bgT_jX73uEZ-r0VJGNQQ6thA/exec';
+
+        const rootPage = document.getElementById('root-page');
+        const studentPage = document.getElementById('student-page');
+        const tutorPage = document.getElementById('tutor-page');
+        const announcementsSection = document.getElementById('announcements-section');
+        const announcementsDisplay = document.getElementById('announcements-display');
+
+        function showPage(pageToShow) {
+            rootPage.classList.add('hidden');
+            studentPage.classList.add('hidden');
+            tutorPage.classList.add('hidden');
+            pageToShow.classList.remove('hidden');
+
+            if (pageToShow === rootPage) {
+                announcementsSection.classList.remove('hidden');
+            } else {
+                announcementsSection.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('nav-to-student').addEventListener('click', () => {
+            showPage(studentPage);
+            window.history.pushState(null, '', '?form=student');
+        });
+        document.getElementById('nav-to-tutor').addEventListener('click', () => {
+            showPage(tutorPage);
+            window.history.pushState(null, '', '?form=tutor');
+        });
+        document.getElementById('back-from-student').addEventListener('click', () => {
+            showPage(rootPage);
+            window.history.pushState(null, '', window.location.pathname);
+        });
+        document.getElementById('back-from-tutor').addEventListener('click', () => {
+            showPage(rootPage);
+            window.history.pushState(null, '', window.location.pathname);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const formType = params.get('form');
+            if (formType === 'student') {
+                showPage(studentPage);
+            } else if (formType === 'tutor') {
+                showPage(tutorPage);
+            } else {
+                showPage(rootPage);
+            }
+        });
+
+        // Event listeners for the "Area/Neighborhood" dropdowns
+        document.getElementById('student-area').addEventListener('change', (event) => {
+            const otherAreaContainer = document.getElementById('student-other-area-container');
+            const otherAreaInput = document.getElementById('student-other-area');
+            if (event.target.value === 'Not Listed') {
+                otherAreaContainer.classList.remove('hidden');
+                otherAreaInput.setAttribute('required', 'required');
+            } else {
+                otherAreaContainer.classList.add('hidden');
+                otherAreaInput.removeAttribute('required');
+                otherAreaInput.value = '';
+            }
+        });
+
+        document.getElementById('tutor-area').addEventListener('change', (event) => {
+            const otherAreaContainer = document.getElementById('tutor-other-area-container');
+            const otherAreaInput = document.getElementById('tutor-other-area');
+            if (event.target.value === 'Not Listed') {
+                otherAreaContainer.classList.remove('hidden');
+                otherAreaInput.setAttribute('required', 'required');
+            } else {
+                otherAreaContainer.classList.add('hidden');
+                otherAreaInput.removeAttribute('required');
+                otherAreaInput.value = '';
+            }
+        });
+
+        const readFileAsBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        };
+
+        async function submitForm(event) {
+            event.preventDefault();
+
+            Swal.fire({
+                title: 'Submitting...',
+                text: 'Please wait while we process your registration.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            try {
+                if (form.id === 'tutor-form') {
+                    const fileInput = document.getElementById('tutor-file');
+                    const file = fileInput.files[0];
+                    if (file) {
+                        if (file.size > 1024 * 1024 * 10) {
+                            throw new Error("File size should be less than 10MB.");
+                        }
+                        formData.append("file", await readFileAsBase64(file));
+                        formData.append("mimeType", file.type);
+                    }
+                }
+
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Registration submitted successfully!',
+                        icon: 'success',
+                        confirmButtonColor: '#22c55e'
+                    });
+                    form.reset();
+                } else {
+                    throw new Error(result.message || 'An unknown error occurred.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'An unexpected error occurred: ' + error.message,
+                    icon: 'error',
+                    confirmButtonColor: '#ef4444'
+                });
+            }
+        }
+
+        document.getElementById('tutor-form').addEventListener('submit', submitForm);
+        document.getElementById('student-form').addEventListener('submit', submitForm);
+
+        function generateQRCode(elementId, data, color) {
+            const canvas = document.getElementById(elementId);
+            if (!canvas) return;
+
+            QRCode.toCanvas(canvas, data, {
+                width: 128,
+                color: {
+                    dark: color,
+                    light: '#ffffff'
+                }
+            }, function (error) {
+                if (error) console.error(error);
+            });
+        }
+
+        function downloadQRCode(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+
+            const url = canvas.toDataURL("image/png");
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = url;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        document.getElementById('show-student-qr').addEventListener('click', () => {
+            const container = document.getElementById('student-qr-container');
+            container.classList.remove('hidden');
+            const pageUrl = window.location.href.split('?')[0];
+            generateQRCode('student-qrcode-canvas', `${pageUrl}?form=student`, '#059669');
+        });
+
+        document.getElementById('download-student-qr').addEventListener('click', () => {
+            downloadQRCode('student-qrcode-canvas', 'quantum-tutoring-student-form.png');
+        });
+
+        document.getElementById('show-tutor-qr').addEventListener('click', () => {
+            const container = document.getElementById('tutor-qr-container');
+            container.classList.remove('hidden');
+            const pageUrl = window.location.href.split('?')[0];
+            generateQRCode('tutor-qrcode-canvas', `${pageUrl}?form=tutor`, '#312e81');
+        });
+
+        document.getElementById('download-tutor-qr').addEventListener('click', () => {
+            downloadQRCode('tutor-qrcode-canvas', 'quantum-tutoring-tutor-form.png');
+        });
+
+
+        // Call fetchAnnouncements on page load
+        fetchAnnouncements();
+
+        async function fetchAnnouncements() {
+            announcementsDisplay.innerHTML = '<p class="text-center text-gray-500">Loading announcements...</p>';
+            try {
+                const url = `${SCRIPT_URL}?action=getAnnouncements`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.success && data.announcements.length > 0) {
+                    announcementsDisplay.innerHTML = '';
+                    data.announcements.forEach(announcement => {
+                        const [id, title, message, status, date, audience] = announcement;
+                        const annDiv = document.createElement('div');
+                        annDiv.classList.add('border-l-4', 'border-indigo-500', 'pl-4', 'py-2', 'bg-indigo-50', 'rounded-md');
+
+                        const annTitle = document.createElement('h4');
+                        annTitle.textContent = title;
+                        annTitle.classList.add('text-lg', 'font-semibold', 'text-gray-800');
+
+                        const annText = document.createElement('p');
+                        annText.textContent = message;
+                        annText.classList.add('text-gray-700', 'text-sm', 'mt-1');
+
+                        const annDate = document.createElement('p');
+                        annDate.textContent = `Posted on: ${new Date(date).toLocaleDateString()}`;
+                        annDate.classList.add('text-xs', 'text-gray-500', 'mt-1');
+
+                        annDiv.appendChild(annTitle);
+                        annDiv.appendChild(annText);
+                        annDiv.appendChild(annDate);
+
+                        announcementsDisplay.appendChild(annDiv);
+                    });
+                } else {
+                    announcementsDisplay.innerHTML = '<p class="text-center text-gray-500">No new announcements at this time.</p>';
+                }
+            } catch (error) {
+                console.error("Failed to fetch announcements:", error);
+                announcementsDisplay.innerHTML = '<p class="text-center text-red-500">Failed to load announcements. Please try again later.</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>
